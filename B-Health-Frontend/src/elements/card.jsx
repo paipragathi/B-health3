@@ -5,7 +5,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
 import hospital from "../assets/hospital-1.jpg"  
-import hosp-2
+
 export default function ActionAreaCard() {
   return (
     <> 
