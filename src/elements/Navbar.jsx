@@ -5,6 +5,8 @@ import PersonIcon from '@mui/icons-material/Person';
 import EditNoteIcon from '@mui/icons-material/EditNote';
 import MedicationIcon from '@mui/icons-material/Medication';
 import FileOpenIcon from '@mui/icons-material/FileOpen';
+import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
+
 
 const SideNav = () => {
   const [activeItem, setActiveItem] = useState("dashboard");
@@ -15,6 +17,7 @@ const SideNav = () => {
 
   return (
     <div className="container">
+     
       <nav className="side-nav">
         <ul className="nav-menu">
           <li
@@ -24,7 +27,7 @@ const SideNav = () => {
             <a href="patient">
               <i className="fas fa-tachometer-alt"></i>
               <span className="menu-text">
-             <HomeIcon/> 
+             <span><HomeIcon/></span> 
               Dashboard </span>
 
             </a>
@@ -68,8 +71,18 @@ const SideNav = () => {
               <span className="menu-text"><FileOpenIcon/>Documents</span>
             </a>
           </li>
+          <li
+            className={`nav-item ${activeItem === "exit" ? "active" : ""}`}
+            onClick={() => handleItemClick("exit")}
+          >
+            <a href="#">
+              <i className="fas fa-sign-out-alt"></i>
+              <span className="menu-text"><EmojiEventsIcon/>Rewards</span>
+            </a>
+           </li>
         </ul>
       </nav>
+    
     </div>
   );
 };

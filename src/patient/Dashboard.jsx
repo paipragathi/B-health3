@@ -1,21 +1,29 @@
 import React from 'react'
 import SideNav from '../elements/Navbar'
-import ImageSlider from '../elements/imageSlider';
+import ImageSlider from '../elements/imageSlider'
+import slider1 from "../assets/slider_1.jpg"
+import slider2 from "../assets/slider_2.jpg"
+import slider3 from "../assets/slider_3.jpg"
+import Card from '../elements/card'
+
 const Dashboard = () => {
 
     const images = [
-        "https://thefamilydoctor.co.in/wp-content/uploads/2020/01/I2-e1578898118449.png",
-        "https://img.freepik.com/free-vector/doctor-character-background_1270-84.jpg?w=360"
-        // Add more image URLs here as needed
+        slider1, slider2, slider3, 
       ];
     
   return (
 
+<>
 
     <div>
-        
-        <ImageSlider images={images} />
+      <ImageSlider images={images}/>  
+     <SideNav/> 
     </div>
+    <div>
+<Card/>
+    </div>
+    </>
   )
 }
 

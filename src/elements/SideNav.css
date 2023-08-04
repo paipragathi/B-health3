@@ -1,19 +1,24 @@
  @import url("https://fonts.googleapis.com/icon?family=Material+Icons"); 
 body {
   font-family: 'Open Sans', sans-serif;
+
   font-size: larger;
 }
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  
 }
 .container {
   height: 100vh;
+
 }
+
 .side-nav,
 .nav-menu {
   height: 100%;
+  position: fixed;
 }
 
 .side-nav .nav-menu {

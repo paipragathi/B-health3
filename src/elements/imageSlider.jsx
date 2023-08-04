@@ -13,14 +13,20 @@ const ImageSlider = ({ images }) => {
   };
 
   return (
+    <>
     <div className="image-slider">
       <img src={images[currentIndex]} alt={`Image ${currentIndex + 1}`} className="slider-image" />
-
       <div className="slider-buttons">
-        <button onClick={handlePreviousClick}>&lt;</button>
-        <button onClick={handleNextClick}>&gt;</button>
+        <button onClick={handlePreviousClick}>&lt;
+      </button><button onClick={handleNextClick}>&gt;</button>
+      </div>  
+      <div className='right-top'>
+      <div className="logos"><span className='text-logo'>B-health</span></div>
+      <div className="taglines"><h1><i>Specialized</i> <span className='health'> Healthcare</span> <i>like no other</i></h1></div>
       </div>
     </div>
+    
+     </>
   );
 };
 
