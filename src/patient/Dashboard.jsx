@@ -21,7 +21,7 @@ const Dashboard = () => {
      <SideNav/> 
     </div>
     <div>
-<Card/>
+      <Card/>
     </div>
     </>
   )
