@@ -1,10 +1,10 @@
-.image-slider {
+/* .image-slider {
     /* display: flex;
     width: 50vh;
     align-items: center;
     justify-content: center;
     position: absolute;
-    padding-left: 700px; */
+    padding-left: 700px; 
  display: flex;
  justify-content: center;
  position: absolute;
@@ -36,21 +36,21 @@ background-color: #D3D3D3;
   }
   .text-logo{
     text-align: center;
-       /*why doesnt it work ? */
+       /*why doesnt it work ? 
     color: white;
     font-size: 30px;
     font-family: 'Open Sans', sans-serif;
   }
   .slider-image {
     max-width: 1000px;
-    max-height: 500px; /* Set the maximum height for your images */
+    max-height: 500px; /* Set the maximum height for your images 
     object-fit: contain;
     display: flex;
 
     border-radius: 10px;
     justify-content: center;
     align-items: center;
-     /* Adjust the image positioning inside the container */
+     /* Adjust the image positioning inside the container 
   }
   
   .slider-buttons {
@@ -71,4 +71,6 @@ background-color: #D3D3D3;
    
   }
 
-  
+   */
+/* ImageSlider.css */
+

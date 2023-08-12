@@ -6,20 +6,96 @@ import EditNoteIcon from '@mui/icons-material/EditNote';
 import MedicationIcon from '@mui/icons-material/Medication';
 import FileOpenIcon from '@mui/icons-material/FileOpen';
 import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
+import user from "../assets/user.png";
+// import s1 from "../assets/slider_1.jpg"
+// import s2 from "../assets/slider_2.jpg"
+//  import ResponsiveAppBar from '../elements/Navbar-2'
+// import s3 from '../assets/slider_3.jpg'
 
+const slideStyles = {
+  width: "103%",
+  height: "100%",
+  borderRadius: "5px",
+  position: "absolute",
+  left:"300px",
+  backgroundSize: "cover",
+  backgroundPosition: "center",
+  backgroundColor: "blue",
 
-const SideNav = () => {
+};
+
+const rightArrowStyles = {
+  position: "absolute",
+  top: "50%",
+  transform: "translate(0, -50%)",
+  right: "-270px",
+  fontSize: "45px",
+  color: "#fff",
+  zIndex: 1,
+  cursor: "pointer",
+};
+
+const leftArrowStyles = {
+  position: "absolute",
+  top: "50%",
+  transform: "translate(0, -50%)",
+  left: "315px",
+  fontSize: "45px",
+  color: "#fff",
+  zIndex: 1,
+  cursor: "pointer",
+};
+
+const sliderStyles = {
+  position: "relative",
+  height: "100%",
+};
+
+const dotsContainerStyles = {
+  display: "flex",
+  justifyContent: "center",
+};
+
+const dotStyle = {
+  margin: "0 3px",
+  cursor: "pointer",
+  fontSize: "20px",
+};
+const SideNav = ({slides}) => {
   const [activeItem, setActiveItem] = useState("dashboard");
-
+  
   const handleItemClick = (item) => {
     setActiveItem(item);
   };
-
+ 
+    const [currentIndex, setCurrentIndex] = useState(0);
+    const goToPrevious = () => {
+      const isFirstSlide = currentIndex === 0;
+      const newIndex = isFirstSlide ? slides.length - 1 : currentIndex - 1;
+      setCurrentIndex(newIndex);
+    };
+    const goToNext = () => {
+      const isLastSlide = currentIndex === slides.length - 1;
+      const newIndex = isLastSlide ? 0 : currentIndex + 1;
+      setCurrentIndex(newIndex);
+    };
+    const goToSlide = (slideIndex) => {
+      setCurrentIndex(slideIndex);
+    };
+    const slideStylesWidthBackground = {
+      ...slideStyles,
+      backgroundImage: `url(${slides[currentIndex].url})`,
+    };
   return (
-    <div className="container">
+    <>
+   
      
       <nav className="side-nav">
+
         <ul className="nav-menu">
+          <li>
+            <img src={user} style={{height: "180px", width:"220px", margin:"0"}} alt="" />
+          </li>
           <li
             className={`nav-item ${activeItem === "dashboard" ? "active" : ""}`}
             onClick={() => handleItemClick("dashboard")}
@@ -28,7 +104,7 @@ const SideNav = () => {
               <i className="fas fa-tachometer-alt"></i>
               <span className="menu-text">
              <span><HomeIcon/></span> 
-              Dashboard </span>
+              DASHBOARD </span>
 
             </a>
           </li>
@@ -40,7 +116,7 @@ const SideNav = () => {
               <i className="fas fa-user"></i>
               <span className="menu-text">
                 <PersonIcon/>
-                Your Profile</span>
+                YOUR PROFILE</span>
             </a>
           </li>
           <li
@@ -50,7 +126,7 @@ const SideNav = () => {
             <a href="#">
               <i className="fas fa-file-alt"></i>
               <span className="menu-text">
-                <EditNoteIcon/> Appointments</span>
+                <EditNoteIcon/> APPOINTMENTS</span>
             </a>
           </li>
           <li
@@ -59,7 +135,7 @@ const SideNav = () => {
           >
             <a href="#">
               <i className="fas fa-play"></i>
-              <span className="menu-text"> <MedicationIcon/>Treatments</span>
+              <span className="menu-text"> <MedicationIcon/>TREATMENTS</span>
             </a>
           </li>
           <li
@@ -68,7 +144,7 @@ const SideNav = () => {
           >
             <a href="#">
               <i className="fas fa-sign-out-alt"></i>
-              <span className="menu-text"><FileOpenIcon/>Documents</span>
+              <span className="menu-text"><FileOpenIcon/>DOCUMENTS</span>
             </a>
           </li>
           <li
@@ -77,13 +153,35 @@ const SideNav = () => {
           >
             <a href="#">
               <i className="fas fa-sign-out-alt"></i>
-              <span className="menu-text"><EmojiEventsIcon/>Rewards</span>
+              <span className="menu-text"><EmojiEventsIcon/>REWARDS</span>
             </a>
            </li>
         </ul>
       </nav>
     
+    <div className="slide" style={sliderStyles}>
+    <div>
+      <div onClick={goToPrevious} style={leftArrowStyles}>
+        ❰
+      </div>
+      <div onClick={goToNext} style={rightArrowStyles}>
+        ❱
+      </div>
     </div>
+    <div style={slideStylesWidthBackground}></div>
+    <div style={dotsContainerStyles}>
+      {slides.map((slide, slideIndex) => (
+        <div
+          style={dotStyle}
+          key={slideIndex}
+          onClick={() => goToSlide(slideIndex)}
+        >
+          ●
+        </div>
+      ))}
+    </div>
+  </div>
+ </>
   );
 };
 
