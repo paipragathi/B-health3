@@ -2,7 +2,8 @@ import React from 'react'
 import Landing from './landing site/landing';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Dashboard from './patient/Dashboard';
-import Appointment from './Appointment';
+import Appointment2 from './doctor/Appointment2';
+import Appointment from './patient/Appointment';
 const App = () => {
   return (
     <div>
@@ -12,6 +13,7 @@ const App = () => {
             <Route path="/patient" element={<Dashboard/>} /> 
             <Route path="/" element={<Landing/>} />
             <Route path="/appointment" element={<Appointment/>} /> 
+            <Route path="/document" element={<Appointment2/>} /> 
 
       </Routes>
     </Router>

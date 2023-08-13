@@ -270,7 +270,7 @@ const SideNav = () => {
             className={`nav-item ${activeItem === "exit" ? "active" : ""}`}
             onClick={()=>{
               handleItemClick("exit");
-              navigate("/");
+              navigate("/document");
             }}
           >
             <a href="#">
