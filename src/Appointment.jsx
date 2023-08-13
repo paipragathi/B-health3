@@ -3,10 +3,11 @@ import _ from 'lodash';
 import { Container } from 'reactstrap';
 import NavBar from './components/NavBar';
 import AddAppointments from './components/AddAppointments';
-import SearchAppointments from './components/SearchAppointments';
+// import SearchAppointments from './components/SearchAppointments';
 import ListAppointments from './components/ListAppointments';
-import Footer from './components/Footer';
-
+// import Footer from './components/Footer';
+import "./Appointment.css";
+import 'bootstrap/dist/css/bootstrap.min.css';
 class Appointment extends Component {
   constructor(props) {
     super(props);
@@ -75,10 +76,10 @@ class Appointment extends Component {
         <NavBar />
         <Container>
           <AddAppointments saveApt={this.saveAppointment} />
-          <SearchAppointments sort={this.sort} search={this.search} orderBy={this.state.orderBy} orderDir={this.state.orderDir} />
+          {/* <SearchAppointments sort={this.sort} search={this.search} orderBy={this.state.orderBy} orderDir={this.state.orderDir} /> */}
           <ListAppointments appointments={filteredApts} onDelete={this.deleteAppointment} />
         </Container>
-        <Footer />
+        {/* <Footer /> */}
       </>
     );
   }

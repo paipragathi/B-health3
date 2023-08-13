@@ -246,7 +246,7 @@ const SideNav = () => {
           <li
             className={`nav-item ${activeItem === "posts" ? "active" : ""}`}
             onClick={()=>{
-              navigate("/");
+              navigate("/Appointment");
             }}
           >
             <a href="#">
@@ -269,6 +269,7 @@ const SideNav = () => {
           <li
             className={`nav-item ${activeItem === "exit" ? "active" : ""}`}
             onClick={()=>{
+              handleItemClick("exit");
               navigate("/");
             }}
           >
