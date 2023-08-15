@@ -5,7 +5,7 @@ const patientRouter = require('./routes/patient');
 const doctorRouter = require('./routes/doctor');
 const hospitalRouter = require('./routes/hospital');
 require('dotenv').config();
-const dbUrl = process.env.mongo_url;
+const mongo_url = 'mongodb+srv://karnpiyushkarn:MNMpk2k13@cluster0.d5iuvdx.mongodb.net/';
 
 const app = express();
 
@@ -25,7 +25,7 @@ app.use((req,res,next)=>{
     next()
 });
 
-mongoose.connect(dbUrl , {
+mongoose.connect(mongo_url , {
     useNewUrlParser:true,
     useUnifiedTopology: true,
     dbName:"B-Health"

@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const express = require('express');
 require('dotenv').config();
-const {Hospital} = require('../db/index');
+const {Hospital} = require('../db/hospital');
 const jwt = require('jsonwebtoken');
 const secret = process.env.Secret;
 const {authenticateJwt} = require('../middleware/auth');
@@ -16,8 +16,8 @@ router.get('/me',authenticateJwt,(req,res)=>{
 });
 
 router.post('/signup',(req,res)=>{
-    const {username , password} = req.body;
-    Hospital.findOne({username}).then((admin)=>{
+    const {hospitalId , password} = req.body;
+    Hospital.findOne({hospitalId}).then((admin)=>{
         if(admin){
             res.status(403).json({
                 message:"hospital already exists",
@@ -29,7 +29,7 @@ router.post('/signup',(req,res)=>{
             };
             const newAdmin = new Hospital(obj);
             newAdmin.save();
-            const token = jwt.sign({username,role:'hospital'},secret);
+            const token = "Bearer "+ jwt.sign({username,role:'hospital'},secret);
             res.json({
                 message:"hospital created successully",
                 token
@@ -42,7 +42,7 @@ router.post('/login',async(req,res)=>{
     const {username, password} = req.body;
     const admin = await Hospital.findOne({username,password});
     if(admin){
-        const token = jwt.sign({username,role:'hospital'},secret);
+        const token ="Bearer "+ jwt.sign({username,role:'hospital'},secret);
         res.json({
             message:"Logged in successfully",
             token
@@ -55,4 +55,4 @@ router.post('/login',async(req,res)=>{
 });
 
 
-
+module.exports = router;

@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken')
 require('dotenv').config();
 
-const secret = process.env.Secret;
+const secret = "KisikoMatBatana"
 
 const authenticateJwt = (req,res,next)=>{
     const authHeader = req.headers.authorization;
@@ -24,5 +24,5 @@ const authenticateJwt = (req,res,next)=>{
 };
 
 module.exports = {
-    authenticateJwt
+    authenticateJwt,secret
 }
