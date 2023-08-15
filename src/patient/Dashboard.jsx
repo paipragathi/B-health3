@@ -27,11 +27,9 @@ const Dashboard = () => {
       <div className="c" style={containerStyles}>
         <SideNav slides={slides} />
       </div> 
-  
+  </>
 
-  
-    </>
-  )
-}
+)
+};
 
 export default Dashboard;

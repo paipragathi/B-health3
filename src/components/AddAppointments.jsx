@@ -16,7 +16,8 @@ class AddAppointments extends React.Component {
       aptDate: "",
       aptTime: "",
       aptNotes: "",
-      formErrors: false
+      formErrors: false,
+      filesAny:""
     };
   }
   toggleBody = () => {
@@ -27,14 +28,15 @@ class AddAppointments extends React.Component {
   save = (e) => {
     e.preventDefault();
     const { patientName, patientAge, gender, aptDate, aptTime, aptNotes } = this.state;
-    if (patientName !== "" && patientAge !== "" && gender !== "" && aptDate !== "" && aptTime !== "" && aptNotes !== "") {
+    if (patientName !== "" && patientAge !== "" && gender !== "" && aptDate !== "" && aptTime !== "" && aptNotes !== "" && filesAny !== "") {
       let apt = {
         id: Date.now(),
         patientName: this.state.patientName,
         patientAge: this.state.patientAge,
         gender: this.state.gender,
         aptDate: this.state.aptDate + ' ' + this.state.aptTime,
-        aptNotes: this.state.aptNotes
+        aptNotes: this.state.aptNotes,
+        filesAny: this.state.filesAny
       };
       let clear = {
         patientName: "",
@@ -43,6 +45,7 @@ class AddAppointments extends React.Component {
         aptDate: "",
         aptTime: "",
         aptNotes: "",
+        filesAny: "",
       };
       this.setState({
         formErrors: false,
@@ -104,6 +107,10 @@ class AddAppointments extends React.Component {
             <FormGroup>
               <Label for="exampleText">Problem</Label>
               <Input type="textarea" id="aptNotes" placeholder="Notes" value={this.state.aptNotes} onChange={this.handleChange} />
+            </FormGroup>
+            <FormGroup>
+              <Label for="filesAny">Any files to upload</Label>
+              <Input type="file" id="filesAny" placeholder="any files to upload" value={this.state.filesAny} onChange={this.handleChange} />
             </FormGroup>
             <Alert color="danger" style={errors}>
               Please fill all the details

@@ -20,14 +20,14 @@ class Appointment extends Component {
     };
   }
 
-  componentDidMount() {
-    fetch('./data.json')
-      .then(res => res.json())
-      .then(data => this.setState({
-        appointments: data
-      }))
-      .catch(error => console.log('There has been a problem with fetching appointments.'))
-  }
+  // componentDidMount() {
+  //   fetch('./data.json')
+  //     .then(res => res.json())
+  //     .then(data => this.setState({
+  //       appointments: data
+  //     }))
+  //     .catch(error => console.log('There has been a problem with fetching appointments.'))
+  // }
 
   saveAppointment = (newAppointment) => {
     let apts = this.state.appointments;

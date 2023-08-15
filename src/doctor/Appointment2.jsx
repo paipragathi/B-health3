@@ -2,12 +2,11 @@ import React, { Component } from 'react';
 import _ from 'lodash';
 import { Container } from 'reactstrap';
 import NavBar from '../components/NavBar';
-import AddAppointments from "../components/AddAppointments";
+import AddAppointments from '../components/AddAppointments';
 import SearchAppointments from '../components/SearchAppointments';
 import ListAppointments from '../components/ListAppointments';
 // import Footer from './components/Footer';
-import "./Appointment.css";
-import 'bootstrap/dist/css/bootstrap.min.css';
+
 class Appointment2 extends Component {
   constructor(props) {
     super(props);
@@ -76,7 +75,7 @@ class Appointment2 extends Component {
         <NavBar />
         <Container>
           <AddAppointments saveApt={this.saveAppointment} />
-        <SearchAppointments sort={this.sort} search={this.search} orderBy={this.state.orderBy} orderDir={this.state.orderDir} /> 
+          <SearchAppointments sort={this.sort} search={this.search} orderBy={this.state.orderBy} orderDir={this.state.orderDir} />
           <ListAppointments appointments={filteredApts} onDelete={this.deleteAppointment} />
         </Container>
         {/* <Footer /> */}
