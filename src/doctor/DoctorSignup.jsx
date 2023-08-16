@@ -1,21 +1,21 @@
 import React, { useState } from "react";
-import Button from "@mui/material/Button";
-import { TextField,Typography } from "@mui/material";
-import Card from "@mui/material/Card";
-import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import EHR from "../artifacts/contracts/EHR.sol/EHR.json";
-import Reward from '../artifacts/contracts/Reward.sol/Reward.json';
 
-
-const PatientSignup = ()=>{
-
+const DoctorSignup = ()=>{
+    const [name, setName] = useState("");
+    const [phone, setPhone] = useState("");
+    const [password, setPassword] = useState("");
+    const [dob , setDob] = useState("");
+    const [gender, setGender] = useState("");
+    const [qualification, setQualification] = useState("");
+    const [major , setMajor] = useState("");
+    const [date, setDate] = useState("")
     const [account,setAccount] = useState("");
   const [ehrContract ,setEhrContract] = useState(null);
   const [rewardContract ,setRewardContract] = useState(null);
   const [provider ,setProvider] = useState(null);
   const [email ,setEmail] = useState("");
-  const [walletAddress ,setWalletAddress] = useState("");
-
+// name, email,phone ,password, dob, gender,qualification,major,walletAddress, dateOfRegistration 
+    
   useEffect(()=>{
     const provider = new ethers.providers.Web3Provider(window.ethereum);
     const loadProvider = async()=>{
@@ -31,7 +31,6 @@ const PatientSignup = ()=>{
         const signer = provider.getSigner();
         const address = await signer.getAddress();
         setAccount(address);
-        setWalletAddress(address);
 
         let ehrContractAddress = '0x897F6B5f3a44096AE8DE19f7f413b94370868A8a';
         let rewardContractAddress = '0x8824b9479f9C217f7BB28FBEaC728A1118e2B48C';
@@ -68,23 +67,7 @@ const PatientSignup = ()=>{
       })
     })
   },[])
-
-    const [name ,setName] = useState("");
-    const [phone ,setPhone] = useState("");
-    const [password ,setPassword] = useState("");
-    const [gender ,setGender] = useState("");
-    const [dob ,setDob] = useState("");
-    const [height ,setHeight] = useState("");
-    const [weight ,setWeight] = useState("");
-    const [houseAddress ,setHouseAddress] = useState("");
-    const [bloodGroup ,setBloodGroup] = useState("");
-    const [allergies ,setAllergies] = useState("");
-    const [emergencyName ,setEmergencyName] = useState("");
-    const [emergencyContact ,setEmergencyContact] = useState("");
-
-    const [dateOfRegistration ,setDateOfRegistration] = useState("");
-
-
+    
     return(
         <div>
             <div style={{
@@ -157,34 +140,25 @@ const PatientSignup = ()=>{
                         setDob(e.target.value);
                     }}/>
                     <br /><br />
-
                     <TextField 
                         onChange={(e)=>{
-                            setHeight(e.target.value);
+                            setMajor(e.target.value);
                         }}
                         fullWidth={true} 
-                        label="Height"  
+                        label="Major" 
                         variant="outlined" 
-                    />
-                    <br /><br />
-                    
-                    <TextField 
-                        onChange={(e)=>{
-                            setWeight(e.target.value);
-                        }}
-                        fullWidth={true} 
-                        label="Weight"  
-                        variant="outlined" 
+                        
                     />
                     <br /><br />
 
                     <TextField 
                         onChange={(e)=>{
-                            setHouseAddress(e.target.value);
+                            setQualification(e.target.value);
                         }}
                         fullWidth={true} 
-                        label="Address"  
+                        label="Qualification" 
                         variant="outlined" 
+                        height = "100px"
                     />
                     <br /><br />
 
@@ -194,10 +168,10 @@ const PatientSignup = ()=>{
                         onClick= {async()=>{
                                 const newDate = new Date;
                                 setDateOfRegistration(newDate.getDate());
-                                await fetch("http://localhost:3000/patient/signup",{
+                                await fetch("http://localhost:3000/doctor/signup",{
                                     method:'POST',
                                     body:JSON.stringify({
-                                        name, email,phone ,password, gender,dob,height, weight,houseAddress ,bloodGroup, allergies, emergencyName,emergencyContact ,walletAddress, dateOfRegistration
+                                        name, email,phone ,password, dob, gender,qualification,major,account, date 
                                     }),
                                     headers:{
                                         "Content-type":"application/json"
@@ -207,7 +181,7 @@ const PatientSignup = ()=>{
                                 }).then(data=>{
                                     localStorage.setItem("token",data.token)
                                     console.log(data)
-                                    window.location = "/patient";
+                                    window.location = "/docDashboard";
                                 })
                         }}
 
@@ -216,8 +190,10 @@ const PatientSignup = ()=>{
             
             </Card>
             </div>
+
         </div>
     )
-}
 
-export default PatientSignup;
+};
+
+export default DoctorSignup

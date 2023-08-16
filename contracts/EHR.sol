@@ -98,7 +98,6 @@ contract EHR {
         }
     }
 
-    
 
     function displayDocument(address _user) external view returns(Documents[] memory){
         require(_user == msg.sender || ownership[_user][msg.sender] , "You don't have access");
