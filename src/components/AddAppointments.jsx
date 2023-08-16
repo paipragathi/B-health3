@@ -1,11 +1,15 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {
   Card, CardHeader, CardBody, Form, FormGroup, Label, Input, FormText, Button, Alert
 } from 'reactstrap'
+import EHR from '../artifacts/contracts/EHR.sol/EHR.json';
+import Reward from '../artifacts/contracts/Reward.sol/Reward.json';
 
 const styles = { "backgroundColor": "#007bff", "color": "#ffffff", "cursor": "pointer" };
 
 class AddAppointments extends React.Component {
+
+  
   constructor(props) {
     super(props);
     this.state = {
@@ -60,6 +64,8 @@ class AddAppointments extends React.Component {
     }
 
   }
+ 
+
   handleChange = (event) => {
     this.setState({
       [event.target.id]: event.target.value
@@ -115,7 +121,7 @@ class AddAppointments extends React.Component {
             <Alert color="danger" style={errors}>
               Please fill all the details
           </Alert>
-            <Button type="submit" color="primary" block>Add Appointment</Button>
+            <Button type="submit" color="primary" block onClick={handleContract}>Add Appointment</Button>
           </Form>
         </CardBody>
       </Card >

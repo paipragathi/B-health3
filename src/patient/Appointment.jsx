@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import _ from 'lodash';
 import { Container } from 'reactstrap';
-import NavBar from '../components/NavBar';
+// import NavBar from '../components/NavBar';
 import AddAppointments from "../components/AddAppointments";
 // import SearchAppointments from './components/SearchAppointments';
 import ListAppointments from '../components/ListAppointments';
 // import Footer from './components/Footer';
+import Sidebar from '../elements/sidebar';
 import "./Appointment.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
 class Appointment extends Component {
@@ -73,7 +74,7 @@ class Appointment extends Component {
 
     return (
       <>
-        <NavBar />
+        <Sidebar/>
         <Container>
           <AddAppointments saveApt={this.saveAppointment} />
           {/* <SearchAppointments sort={this.sort} search={this.search} orderBy={this.state.orderBy} orderDir={this.state.orderDir} /> */}
